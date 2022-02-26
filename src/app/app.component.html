@@ -1,0 +1,27 @@
+  <p>
+    <mat-toolbar color="primary">
+      <span>Food Price Calculator</span>
+    </mat-toolbar>
+  </p>
+  <div id="wrapper">
+    <form class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Total price of food</mat-label>
+        <span matPrefix>$ &nbsp;</span>
+        <input matInput type="number" name="totalPrice" prefix="$"  placeholder="e.g. $4 for a box of oreos" [(ngModel)]="totalPrice">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Number of servings</mat-label>
+        <input matInput type="number" name="numberOfServings"  [(ngModel)]="numberOfServings">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Calories per serving</mat-label>
+        <input matInput type="number" name="caloriesPerServing"  [(ngModel)]="caloriesPerServing">
+      </mat-form-field>
+
+      <h2 *ngIf="totalPrice != null && numberOfServings != null">Result is: ${{(this.totalPrice/this.numberOfServings).toFixed(2)}}/serving</h2>
+      <h2 *ngIf="totalPrice != null && numberOfServings != null && caloriesPerServing != null">Result is: ${{((100*this.totalPrice)/(this.numberOfServings*this.caloriesPerServing)).toFixed(2)}}/100 calories</h2> 
+    </form>
+  </div>
